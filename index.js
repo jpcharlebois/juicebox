@@ -18,6 +18,15 @@ server.use((req, res, next) => {
   next();
 });
 
+// server.get('/', (req, res) => {
+//   res.send('Hello World!');
+// });
+// GET - / - returns homepage
+server.get('/', (req, res) => {
+  // serve up the public folder as static index.html file
+  res.sendFile(__dirname + '/public/index.html');
+});
+
 const apiRouter = require('./api');
 server.use('/api', apiRouter);
 
