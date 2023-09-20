@@ -3,12 +3,17 @@ require('dotenv').config();
 const { PORT = 3000 } = process.env;
 const express = require('express');
 const server = express();
+const app = express();
 
 const bodyParser = require('body-parser');
 server.use(bodyParser.json());
 
 const morgan = require('morgan');
 server.use(morgan('dev'));
+
+const cors = require('cors');
+app.use(cors({ origin: 'http://localhost:8000'}));
+server.use(cors());
 
 server.use((req, res, next) => {
   console.log("<____Body Logger START____>");

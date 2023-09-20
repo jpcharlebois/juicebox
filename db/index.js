@@ -306,7 +306,8 @@ async function createTags(tagList) {
   const valuesStringSelect = tagList.map(
     (_, index) => `$${index + 1}`
   ).join(', ');
-
+console.log("valuesStringInsert: ", valuesStringInsert);
+console.log("valueStringSelect", valuesStringSelect);
   try {
     // insert all, ignoring duplicates
     await client.query(`
